@@ -19,6 +19,8 @@ class TodosController < ApplicationController
   def create
     puts `[create]`
     @todo = Todo.new(todo_params)
+    # ログインユーザーのIDを挿入
+    @todo.User_id = current_user.id
 
     respond_to do |format|
       if @todo.save()
@@ -50,7 +52,7 @@ class TodosController < ApplicationController
     @todo.destroy
 
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'User was successfully destroyed.' }
     end
   end
 

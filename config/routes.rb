@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-
   devise_for :users
-  get 'todos', to: 'todos#index'
+  
+  get 'users', to: 'users#index'
+
+  #get 'todos', to: 'todos#index'
   post 'todos', to: 'todos#create' 
   get 'todos/new', to: 'todos#new',as: 'new_todo'
   get 'todos/:id/edit', to: 'todos#edit',as: 'edit_todo'
@@ -10,5 +12,6 @@ Rails.application.routes.draw do
   put 'todos/:id', to: 'todos#update'  
   delete 'todos/:id', to: 'todos#destroy'
 
-  root to: "todos#index"
+  root to: "users#index"
+
 end
